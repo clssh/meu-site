@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+.rev {
+    color: rgb(0, 255, 55);
+    height: 50px;
+    text-align: center;
+    background-color: chartreuse;
+
+}
+
+.botaoiptv {
+    margin-left: 40%;
+    width: 150px;
+    text-align: center;
+    padding: 15px 20px;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    background-color: #FCC302;
+    font-size: 20px;
+}
+
+.botaointernet {
+    margin-left: 3%;
+    width: 150px;
+    text-align: center;
+    padding: 15px 20px;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    background-color: #FCC302;
+    font-size: 20px;
+}
+
+.bemvindo {
+
+    color: rgb(255, 0, 0);
+    background-size: cover;
+    font-size: 50pt;
+    font: x-large;
+    text-align: center;
+
+}
+
+.termos1 {
+    text-align: center;
+    color: #000000;
+    background-color: #eee;
+
+}
+
+.sub1 {
+    color: #000000;
+    text-align: center;
+    font-size: 40px;
+}
+
+html,
+body {
+    heigth: 100%;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    oberflow: hidden;
+    color: #fff;
+}
+
+body {
+    background-image: url(imagens/flasharrow.png);
+    background: cover;
+    background-size: cover;
+}
+
+p {
+    color: rgb(255, 0, 0);
+}
+
+div#app1 {
+    background-image: url(imagens/app01.png);
+    background-size: cover;
+    margin-left: 15%;
+    width: 230px;
+    height: 310px;
+    transition: all 0.5s;
+    cursor: pointer;
+
+}
+
+div#app1:hover {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.5);
+    }
+
+button#baixar1 {
+    width: 230px;
+    height: 70px;
+    margin-top: 130%;
+    margin-left: 0%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+button#baixar1:hover {
+-webkit-transform: scale(1.0);
+transform: scale(1.5);
+}
+
+div#app2 {
+    background-image: url(imagens/app02.png);
+    background-size: cover;
+    margin-left: 70%;
+    margin-top: -25%;
+    width: 230px;
+    height: 310px;
+    transition: all 0.5s;
+    cursor: pointer;
+
+}
+
+div#app2:hover {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.5);
+    }
+
+button#baixar2 {
+    width: 230px;
+    height: 70px;
+    margin-top: 130%;
+    margin-left: 0%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+button#baixar2:hover {
+-webkit-transform: scale(1.0);
+transform: scale(1.5);
+}
+
+div#bt1{
+background-image: url(imagens/buton01.gif);
+background-color: #000000;
+    
+}
+
+div#bt2{
+height: 200px;
+width: 2200px;
+}

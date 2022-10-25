@@ -1,0 +1,164 @@
+CENTRALIZANDO COISAS
+Uma tarefa comum em CSS é a centralização de textos e imagens. Existem três tipos de tarefas relacionadas à centralização:
+
+Centrar linhas de textos
+Centrar um bloco de texto ou uma imagem
+Centrar na vertical um bloco ou uma imagem
+As recentes implementações das CSS nível 3 prevêem funcionalidades que permitem centrar elementos posicionados de forma absoluta:
+
+Centrar na vertical com CSS3
+Centrar na vertical e na horizontal com CSS3
+Centrar na viewport com CSS3
+CENTRAR LINHAS DE TEXTOS
+Centrar textos de títulos ou parágrafos é a mais simples e comum tarefa de centralização. Basta usar a propriedade CSS 'text-align', conforme mostrado a seguir:
+
+P { text-align: center }
+H2 { text-align: center }
+As regras CSS mostradas renderizam cada uma das linhas de P ou de H2 centralizadas na horizontal conforme mostrado a seguir:
+
+Todas as linhas desse parágrafo estão centralizadas na horizontal, entre as margens do parágrafo graças ao valor 'center' declarado para a propriedade CSS 'text-align'.
+
+CENTRAR UM BLOCO OU UMA IMAGEM
+Outra tarefa de centralização consiste em centrar não um texto, mas um bloco como um todo. Dito de outra forma: definir margens esquerda e direirta iguais par um bloco. Para obter esse efeito usamos o valor 'auto' para a proriedade margin. É necessário que o bloco tenha uma largura fixa, pois em se tratando de blocos flexíveis ele assumira a largura total disponível. Observe o exemplo a seguir:
+
+P.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
+...
+<P class="blocktext">Esse bloco de texto...
+Esse bloco de texto com largura reduzida está centralizado. Notar que as linhas de texto do bloco não estão centralizadas (elas estão alinhadas à esquerda) ao contrário do que foi mostrado no exemplo anterior..
+
+Esta é, também, a técnica usada para centralizar uma imagem: defina nível de bloco para a imagem e o valor 'auto' para as margens esquerda e direita, conforme mostrado a seguir:
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+...
+<IMG class="displayed" src="..." alt="...">
+A imagem mostrada está centralizada na horizontal:uma imagem randômica
+CENTRAR NA VERTICAL UM BLOCO OU UMA IMAGEM
+CSS nível 2 não prevê uma propriedade para centrar na vertical. Provavelmente haverá uma nas CSS nível 3 (ver adiante nesta página). Mas, até mesmo com uso das CSS2 você poderá centralizar blocos verticalmente combinando algumas propriedades. O "truque" consiste em formatar o bloco de conteúdo para se comportar com célula de tabela, pois conteúdos de células de tabela podem ser centralizados na vertical em CSS2.
+
+O exemplo mostrado a seguir centra um parágrafo inserido em um container de determinada altura. Um exemplo em página própria mostra um parágrafo centralizado verticalmente na janela do navegador, pois o parágrafo foi posicionado de forma absoluta em um container com a altura da janela do navegador.
+
+DIV.container {
+    min-height: 10em;
+    display: table-cell;
+    vertical-align: middle }
+...
+<DIV class="container">
+  <P>Parágrafo curto centarlizado na vertical.
+</DIV>
+Parágrafo curto centralizado na vertical.
+
+CENTRAR NA VERTICAL COM CSS3
+As CSS3 oferecem outras possibilidades. No ano atual (2014), uma boa solução para centralizar verticalmente sem uso de posicionamento absoluto (que pode causar "overlapping" do texto) ainda está sendo discutido. Mas, caso o "overlapping" do texto não seja um problema no seu documento, você poderá usar a propriedade 'transform' para centralizar um elemento posicionado de forma absoluta, como mostrado a seguir:
+
+Parágrafo centralizado na vertical.
+Para a marcação mostrada a seguir:
+
+<div class=container3>
+  <p>Parágrafo…
+</div>
+A folha de estilos é conforme mostrada a seguir:
+
+div.container3 {
+   height: 10em;
+   position: relative }              /* 1 */
+div.container3 p {
+   margin: 0;
+   position: absolute;               /* 2 */
+   top: 50%;                         /* 3 */
+   transform: translate(0, -50%) }   /* 4 */
+A chave para a solução é:
+
+Declare o container posicionado de forma relativa com a finalidade de criar um contexto de posicionamento para os elementos posicionados de forma absoluta dentro dele, container.
+Posicione o elemento dentro do container de forma absoluta.
+Declare, para o elemento dentro do container, coordenada 'top' de posicionamento igual a 50%. (Notar que 'top: 50%' significa 50% da altura do container.)
+Use 'translation' para deslocar o elemento dentro do container de um valor igual a metade da sua (do elemento) altura. (O valor '50%' em 'translate(0, -50%)' se refere à altura do próprio elemento.)
+Recentemente (desde 2015), criou-se outra técnica em diversas implementações das CSS. Tais técnicas se baseiam no novo valor 'flex' para a propriedade 'display'. Esse valor foi criado para uso em interfaces gráficas de usuário (GUIs), mas nada impoede que você a use em um documento desde que o documento seja estruturado correta e adequadamente, conforme exemplo mostrado a seguir:
+
+Parágrafo centralizado na vertical.
+
+e a correspondente folha de estilos:
+
+div.container5 {
+  height: 10em;
+  display: flex;
+  align-items: center }
+div.container5 p {
+  margin: 0 }
+CENTRAR NA VERTICAL E NA HORIZONTAL COM CSS3
+Podemos combinar os dois métodos mostrados anteriormente para centrar na horizontal e na vertical ao mesmo tempo.
+
+Um efeito colateral de se declarar o parágrafo posicionado de forma absoluta é que ele assumirá uma largura estritamente necessária (a não ser, obviamente, que se declare explicitamente uma largura). No exemplo mostrado a seguir é exatamente isso que queremos: Centralizamos um parágrafo com uma só palavra ("Centralizado!") e sua largura é exatamente igual a largura da palavra. Observe a seguir:
+
+Centralizado!
+O fundo na cor amarela foi declarado com a finalidade de mostrar que a largura do parágrafo é exatamente a mesma largura do seu conteúdo (da palavra "Centralizado!"). Para o próximo exemplo considere a mesma marcação do exemplo anterior:
+
+<div class=container4>
+  <p>Centralizado!
+</div>
+Em relação a centralização vertical considere, também, a folha de estilos do exemplo anterior. Defina para o elemento P uma coordenada 'left' para a esquerda igual a 50% com uso da declaração 'left: 50%' e use a transformação 'translate' para mover o elemento 50% de sua largura para a esquerda. Observe a seguir:
+
+div.container4 {
+    height: 10em;
+    position: relative }
+div.container4 p {
+    margin: 0;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+No exemplo mostrado a seguir uma explicação do porquê declarar 'margin-right: -50%' é necessário.
+
+Havendo suporte para CSS 'flex' fica fácil conforme mostrado a seguir:
+
+Centralizado!
+
+e a folha de estilos:
+
+div.container6 {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center }
+div.container6 p {
+  margin: 0 }
+ou seja, o único acréscimo foi a declaração 'justify-content: center'. Tal como previsto na especificação, a funcionalidade 'align-items' controla o alinhamento vertical dos conteúdos de um container 'flex' e a funcionalidade 'justify-content' controla o alinhamento horizontal daqueles conteúdos. (Na realidade estas funcionalidades são um pouco mais complexas do que seus nomes sugerem, mas em resumo esse exemplo simples mostra como funciona o alinhamento com uso de 'flex'). Um efeito colateral de 'flex' é que o elemento-filho, P nesse exemplo, assume a menor largura possível.
+
+CENTRAR NA VIEWPORT COM CSS3
+A viewport é o container "default" para elementos posicionados de forma absoluta. (Tratando-se de navegadores a viewport é a janela do navegador). Assim, centrar um elemento na viewport é uma tarefa bem simples. Observe a seguir um exemplo completo criado com sintaxe HTML5:
+
+<html>
+  <style>
+    body {
+        background: white }
+    section {
+        background: black;
+        color: white;
+        border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) }
+  </style>
+  <section>
+    <h1>Fantástica centralização</h1>
+    <p>Esse bloco de texto está centralizado na vertical.
+    <p>E centralizado na horizontal também, caso a janela tenha dimensões suficientes.
+  </section>
+Observe um exemplo em página própria.
+
+A declaração 'margin-right: -50%' destina-se a compensar a declaração 'left: 50%'. A propriedade 'left' subtrai 50% da largura do elemento.
+
+Redimensione a janela do navegador: você poderá observar que cada sentença ocupa uma linha se a largura da janela for larga o suficiente. Em larguras de janela pequenas haverá quebras de linhas. Se remover a declração 'margin-right: -50%' e redimensionar a janela vai observar que as sentenças quebrarão ainda que a janela seja duas vezes mais larga que as linhas do texto.
+
+(Usar 'translate' para centralizar na viewport foi proposto pela primeira vez por “Charlie” em resposta a um questionemento no Stack Overflow.)
